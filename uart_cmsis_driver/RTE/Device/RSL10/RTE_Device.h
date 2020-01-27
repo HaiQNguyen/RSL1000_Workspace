@@ -13,9 +13,6 @@
  * RTE_Device.h
  * - RTE Drivers configuration file. This file is used to enable/disable a
  *   certain driver and to configure the pin mapping for each interface.
- * ----------------------------------------------------------------------------
- * $Revision: 1.3 $
- * $Date: 2019/10/28 21:11:25 $
  * ------------------------------------------------------------------------- */
 
 #ifndef RTE_DEVICE_H
@@ -1978,7 +1975,7 @@
 // <i> Enabled GPIO11 configuration
 // <i> Default: 0
 #ifndef RTE_GPIO11_EN
- #define RTE_GPIO11_EN       1
+ #define RTE_GPIO11_EN       0
 #endif
 //   <o>Drive strength
 //       <0x0=> 2x drive strength
@@ -2116,7 +2113,7 @@
 // <i> Enabled GPIO13 configuration
 // <i> Default: 0
 #ifndef RTE_GPIO13_EN
- #define RTE_GPIO13_EN       1
+ #define RTE_GPIO13_EN       0
 #endif
 //   <o>Drive strength
 //       <0x0=> 2x drive strength
@@ -2176,7 +2173,7 @@
 //   <i> Defines the io mode
 //   <i> Default: DISABLED
 #ifndef RTE_GPIO13_IOMODE_DEFAULT
- #define RTE_GPIO13_IOMODE_DEFAULT   0x00F
+ #define RTE_GPIO13_IOMODE_DEFAULT   0x03F
 #endif
 // </e>
 // <e>GPIO 14 configure
@@ -2185,7 +2182,7 @@
 // <i> Enabled GPIO14 configuration
 // <i> Default: 0
 #ifndef RTE_GPIO14_EN
- #define RTE_GPIO14_EN       1
+ #define RTE_GPIO14_EN       0
 #endif
 //   <o>Drive strength
 //       <0x0=> 2x drive strength
@@ -2245,7 +2242,7 @@
 //   <i> Defines the io mode
 //   <i> Default: DISABLED
 #ifndef RTE_GPIO14_IOMODE_DEFAULT
- #define RTE_GPIO14_IOMODE_DEFAULT   0x300
+ #define RTE_GPIO14_IOMODE_DEFAULT   0x03F
 #endif
 // </e>
 // <e>GPIO 15 configure
@@ -2349,7 +2346,7 @@
 //   <i> Defines the interrupt trigger event
 //   <i> Default: rising edge
 #ifndef RTE_GPIO_DIO0_TRG_DEFAULT
- #define RTE_GPIO_DIO0_TRG_DEFAULT   4
+ #define RTE_GPIO_DIO0_TRG_DEFAULT   5
 #endif
 //   <o>Debounce filter
 //       <0x0=> disabled
@@ -2528,7 +2525,7 @@
 //   <i> Defines debounce filter count
 //   <i> Default: 10
 #ifndef RTE_GPIO_INT_DBC_CNT_DEFAULT
- #define RTE_GPIO_INT_DBC_CNT_DEFAULT   160
+ #define RTE_GPIO_INT_DBC_CNT_DEFAULT   49
 #endif
 // </h>
 // <e>NMI configuration enable
@@ -2654,7 +2651,7 @@
 //   <i> Defines if I2C driver should be enabled.
 //   <i> Default: 1
 #ifndef RTE_I2C
- #define RTE_I2C     1
+ #define RTE_I2C     0
 #endif
 //   <e>I2C auto configuration
 // ===============================
@@ -2663,7 +2660,7 @@
 //   <i> Drivers are also powered up during initialization if enabled.
 //   <i> Default: enable
 #ifndef RTE_I2C0_CFG_EN_DEFAULT
- #define RTE_I2C0_CFG_EN_DEFAULT   0
+ #define RTE_I2C0_CFG_EN_DEFAULT   1
 #endif
 //   <o>I2C speed
 //       <0x1=> standard speed (100kHz)
@@ -2745,7 +2742,7 @@
 //   <i> Defines gpio pad number to be used as a clock data line.
 //   <i> Default: 0
 #ifndef RTE_I2C0_SCL_PIN_DEFAULT
- #define RTE_I2C0_SCL_PIN_DEFAULT  9
+ #define RTE_I2C0_SCL_PIN_DEFAULT  7
 #endif
 // </h>
 // <h>Interrupt priority configuration
@@ -3418,7 +3415,7 @@
 //   <i> Defines gpio pad number to be used as a rx data line.
 //   <i> Default: 0
 #ifndef RTE_USART0_RX_PIN_DEFAULT
- #define RTE_USART0_RX_PIN_DEFAULT  14
+ #define RTE_USART0_RX_PIN_DEFAULT  2
 #endif
 //   <o>TX data gpio pad
 //       <0x0=> 0
@@ -3440,7 +3437,7 @@
 //   <i> Defines gpio pad number to be used as a tx data line.
 //   <i> Default: 0
 #ifndef RTE_USART0_TX_PIN_DEFAULT
- #define RTE_USART0_TX_PIN_DEFAULT  13
+ #define RTE_USART0_TX_PIN_DEFAULT  3
 #endif
 // </h>
 // <h>Interrupt priority configuration
@@ -3461,12 +3458,6 @@
 // </h>
 // </e>
 //------------- <<< end of configuration section >>> -----------------------
-
-#if (RTE_GPIO)
-#ifndef RTECFG_GPIO
-	#error "ERROR - GPIO component not selected in RTE configuration"
-#endif
-#endif
 
 #if (RTE_DMA)
 #ifndef RTECFG_DMA

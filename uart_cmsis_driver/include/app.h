@@ -10,7 +10,8 @@
  * This is Reusable Code.
  * ----------------------------------------------------------------------------
  * app.h
- * - Application header file for the RSL10 GPIO driver sample application
+ * - Application header file for the uart_cmsis_driver sample
+ *   application
  * ------------------------------------------------------------------------- */
 
 #ifndef APP_H
@@ -28,17 +29,21 @@ extern "C"
 /* ----------------------------------------------------------------------------
  * Include files
  * --------------------------------------------------------------------------*/
+
 #include <RTE_Device.h>
-#include <rsl10.h>
 #include <GPIO_RSLxx.h>
+#include <rsl10.h>
+#include <string.h>
+#include <stdio.h>
 #include <USART_RSLxx.h>
-#include <I2C_RSLxx.h>
+
 /* ----------------------------------------------------------------------------
  * Defines
  * --------------------------------------------------------------------------*/
-#if !RTE_GPIO
-    #error "Please configure GPIO in RTE_Device.h"
+#if !RTE_USART
+    #error "Please configure USART0 in RTE_Device.h"
 #endif    /* if !RTE_USART0 */
+
 
 /* DIO number that is used for easy re-flashing (recovery mode) */
 #define RECOVERY_DIO                    12
@@ -46,20 +51,23 @@ extern "C"
 /* GPIO definitions */
 #define LED_DIO                         6
 #define BUTTON_DIO                      5
-#define TEST_DIO                        11
 
+/* Buffer offset */
+#define BUFFER_OFFSET                   5
 
 /* ----------------------------------------------------------------------------
  * Global variables and types
  * --------------------------------------------------------------------------*/
-extern DRIVER_GPIO_t Driver_GPIO;
 extern ARM_DRIVER_USART Driver_USART0;
-extern ARM_DRIVER_I2C Driver_I2C0;
+extern DRIVER_GPIO_t Driver_GPIO;
+
 /* ---------------------------------------------------------------------------
 * Function prototype definitions
 * --------------------------------------------------------------------------*/
-extern void Initialize(void);
+void Usart_EventCallBack(uint32_t event);
 void Button_EventCallback(uint32_t event);
+void Initialize(void);
+void ToggleLed(uint32_t n, uint32_t delay_ms);
 
 /* ----------------------------------------------------------------------------
  * Close the 'extern "C"' block
