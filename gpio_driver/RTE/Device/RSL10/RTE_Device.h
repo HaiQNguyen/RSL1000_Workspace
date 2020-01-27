@@ -332,7 +332,7 @@
 //   <i> Defines if dma 2 should be enabled.
 //   <i> Default: 1
 #ifndef RTE_DMA2_EN
- #define RTE_DMA2_EN       0
+ #define RTE_DMA2_EN       1
 #endif
 // <e>DMA 2 auto configuration
 // ===============================
@@ -624,7 +624,7 @@
 //   <i> Defines if dma 4 should be enabled.
 //   <i> Default: 1
 #ifndef RTE_DMA4_EN
- #define RTE_DMA4_EN       1
+ #define RTE_DMA4_EN       0
 #endif
 // <e>DMA 4 auto configuration
 // ===============================
@@ -2176,7 +2176,7 @@
 //   <i> Defines the io mode
 //   <i> Default: DISABLED
 #ifndef RTE_GPIO13_IOMODE_DEFAULT
- #define RTE_GPIO13_IOMODE_DEFAULT   0x00F
+ #define RTE_GPIO13_IOMODE_DEFAULT   0x300
 #endif
 // </e>
 // <e>GPIO 14 configure
@@ -2245,7 +2245,7 @@
 //   <i> Defines the io mode
 //   <i> Default: DISABLED
 #ifndef RTE_GPIO14_IOMODE_DEFAULT
- #define RTE_GPIO14_IOMODE_DEFAULT   0x300
+ #define RTE_GPIO14_IOMODE_DEFAULT   0x00F
 #endif
 // </e>
 // <e>GPIO 15 configure
@@ -2654,7 +2654,7 @@
 //   <i> Defines if I2C driver should be enabled.
 //   <i> Default: 1
 #ifndef RTE_I2C
- #define RTE_I2C     1
+ #define RTE_I2C     0
 #endif
 //   <e>I2C auto configuration
 // ===============================
@@ -2745,7 +2745,7 @@
 //   <i> Defines gpio pad number to be used as a clock data line.
 //   <i> Default: 0
 #ifndef RTE_I2C0_SCL_PIN_DEFAULT
- #define RTE_I2C0_SCL_PIN_DEFAULT  9
+ #define RTE_I2C0_SCL_PIN_DEFAULT  7
 #endif
 // </h>
 // <h>Interrupt priority configuration
@@ -3418,7 +3418,7 @@
 //   <i> Defines gpio pad number to be used as a rx data line.
 //   <i> Default: 0
 #ifndef RTE_USART0_RX_PIN_DEFAULT
- #define RTE_USART0_RX_PIN_DEFAULT  14
+ #define RTE_USART0_RX_PIN_DEFAULT  13
 #endif
 //   <o>TX data gpio pad
 //       <0x0=> 0
@@ -3440,7 +3440,7 @@
 //   <i> Defines gpio pad number to be used as a tx data line.
 //   <i> Default: 0
 #ifndef RTE_USART0_TX_PIN_DEFAULT
- #define RTE_USART0_TX_PIN_DEFAULT  13
+ #define RTE_USART0_TX_PIN_DEFAULT  14
 #endif
 // </h>
 // <h>Interrupt priority configuration

@@ -68,46 +68,46 @@ void Initialize(void)
     while (DIO_DATA->ALIAS[RECOVERY_DIO] == 0);
 
     /* Prepare the 48 MHz crystal
-	  * Start and configure VDDRF */
-	 ACS_VDDRF_CTRL->ENABLE_ALIAS = VDDRF_ENABLE_BITBAND;
-	 ACS_VDDRF_CTRL->CLAMP_ALIAS  = VDDRF_DISABLE_HIZ_BITBAND;
+	* Start and configure VDDRF */
+	ACS_VDDRF_CTRL->ENABLE_ALIAS = VDDRF_ENABLE_BITBAND;
+	ACS_VDDRF_CTRL->CLAMP_ALIAS  = VDDRF_DISABLE_HIZ_BITBAND;
 
-	 /* Wait until VDDRF supply has powered up */
-	 while (ACS_VDDRF_CTRL->READY_ALIAS != VDDRF_READY_BITBAND);
+	/* Wait until VDDRF supply has powered up */
+	while (ACS_VDDRF_CTRL->READY_ALIAS != VDDRF_READY_BITBAND);
 
-	 /* Enable RF power switches */
-	 SYSCTRL_RF_POWER_CFG->RF_POWER_ALIAS   = RF_POWER_ENABLE_BITBAND;
+	/* Enable RF power switches */
+	SYSCTRL_RF_POWER_CFG->RF_POWER_ALIAS   = RF_POWER_ENABLE_BITBAND;
 
-	 /* Remove RF isolation */
-	 SYSCTRL_RF_ACCESS_CFG->RF_ACCESS_ALIAS = RF_ACCESS_ENABLE_BITBAND;
+	/* Remove RF isolation */
+	SYSCTRL_RF_ACCESS_CFG->RF_ACCESS_ALIAS = RF_ACCESS_ENABLE_BITBAND;
 
-	 /* Start the 48 MHz oscillator without changing the other register bits */
-	 RF->XTAL_CTRL = ((RF->XTAL_CTRL & ~XTAL_CTRL_DISABLE_OSCILLATOR) |
-					  XTAL_CTRL_REG_VALUE_SEL_INTERNAL);
+	/* Start the 48 MHz oscillator without changing the other register bits */
+	RF->XTAL_CTRL = ((RF->XTAL_CTRL & ~XTAL_CTRL_DISABLE_OSCILLATOR) |
+			  XTAL_CTRL_REG_VALUE_SEL_INTERNAL);
 
-	 /* Enable 48 MHz oscillator divider at desired prescale value */
-	 RF_REG2F->CK_DIV_1_6_CK_DIV_1_6_BYTE = CK_DIV_1_6_PRESCALE_1_BYTE;
+	/* Enable 48 MHz oscillator divider at desired prescale value */
+	RF_REG2F->CK_DIV_1_6_CK_DIV_1_6_BYTE = CK_DIV_1_6_PRESCALE_1_BYTE;
 
-	 /* Wait until 48 MHz oscillator is started */
-	 while (RF_REG39->ANALOG_INFO_CLK_DIG_READY_ALIAS !=
-			ANALOG_INFO_CLK_DIG_READY_BITBAND);
+	/* Wait until 48 MHz oscillator is started */
+	while (RF_REG39->ANALOG_INFO_CLK_DIG_READY_ALIAS !=
+	ANALOG_INFO_CLK_DIG_READY_BITBAND);
 
-	 /* Switch to 48 MHz oscillator clock */
-	 Sys_Clocks_SystemClkConfig(JTCK_PRESCALE_1   |
-								EXTCLK_PRESCALE_1 |
-								SYSCLK_CLKSRC_RFCLK);
+	/* Switch to 48 MHz oscillator clock */
+	Sys_Clocks_SystemClkConfig(JTCK_PRESCALE_1   |
+						EXTCLK_PRESCALE_1 |
+						SYSCLK_CLKSRC_RFCLK);
 
 	/* Disable unused JTAG Pin */
-	 DIO_JTAG_SW_PAD_CFG->CM3_JTAG_DATA_EN_ALIAS = 0;
+	DIO_JTAG_SW_PAD_CFG->CM3_JTAG_DATA_EN_ALIAS = 0;
 
-    /* Initialize GPIO structure */
-    gpio = &Driver_GPIO;
+	/* Initialize GPIO structure */
+	gpio = &Driver_GPIO;
 
-    /* Initialize GPIO driver */
-    gpio->Initialize(Button_EventCallback);
+	/* Initialize GPIO driver */
+	gpio->Initialize(Button_EventCallback);
 
-    /* Initialize usart driver structure */
-   uart = &Driver_USART0;
+	/* Initialize usart driver structure */
+	uart = &Driver_USART0;
 
 	/* Initialize usart, register callback function */
 
@@ -127,9 +127,9 @@ void Initialize(void)
 	i2c->Control(ARM_I2C_BUS_SPEED, ARM_I2C_BUS_SPEED_STANDARD);
 	i2c->Control(ARM_I2C_BUS_CLEAR, 0);
 
-    /* Stop masking interrupts */
-    __set_PRIMASK(PRIMASK_ENABLE_INTERRUPTS);
-    __set_FAULTMASK(FAULTMASK_ENABLE_INTERRUPTS);
+	/* Stop masking interrupts */
+	__set_PRIMASK(PRIMASK_ENABLE_INTERRUPTS);
+	__set_FAULTMASK(FAULTMASK_ENABLE_INTERRUPTS);
 }
 
 /* ----------------------------------------------------------------------------
@@ -146,10 +146,6 @@ int main(void)
 	char tx[] = "Hello World\n";
     /* Initialize the system */
     Initialize();
-
-    /* RGB LED driver */
-
-
     /* Spin loop */
     while (true)
     {
@@ -157,6 +153,6 @@ int main(void)
         Sys_Watchdog_Refresh();
         uart->Send(tx, 12); /* start transmission */
         gpio->ToggleValue(LED_DIO);
-        Delay_ms(100);
+        Delay_ms(500);
     }
 }
