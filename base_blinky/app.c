@@ -79,6 +79,7 @@ int main(void)
     /* Spin loop */
     while (true)
     {
+
         /* Refresh Watchdog */
         Sys_Watchdog_Refresh();
         gpio->ToggleValue(LED_DIO);

@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<configuration>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration xmlns:xs="http://www.w3.org/2001/XMLSchema-instance">
   <device Dclock="48000000" Dcore="Cortex-M3" DcoreVersion="r2p1" Dendian="Little-endian" Dfamily="RSL10 Series" Dfpu="NO_FPU" Dmpu="NO_MPU" Dname="RSL10" Dvendor="ONSemiconductor:141" Pname="">
     <url>http:/www.keil.com/dd2/onsemiconductor/rsl10</url>
     <package info="ON Semiconductor RSL10 Device Family Pack" name="RSL10" url="www.onsemi.com" vendor="ONSemiconductor" version="3.2.608"/>
@@ -57,7 +57,7 @@
       <file category="source" deviceDependent="1" name="source/firmware/syslib/code/rsl10_sys_timers.c"/>
       <file category="source" deviceDependent="1" name="source/firmware/syslib/code/rsl10_sys_uart.c"/>
       <file category="source" deviceDependent="1" name="source/firmware/syslib/code/rsl10_sys_version.c"/>
-      <file category="source" deviceDependent="1" name="source/firmware/syslib/code/rsl10_protocol.c"/>
+      <file attr="config" category="source" condition="Not_FOTA_Condition" deviceDependent="1" name="source/firmware/syslib/code/rsl10_protocol.c" version="3.2.608"/>
     </component>
     <component Cclass="Device" Cgroup="Startup" Cvariant="source" Cvendor="ONSemiconductor" Cversion="3.2.608" deviceDependent="1">
       <package name="RSL10" url="www.onsemi.com" vendor="ONSemiconductor" version="3.2.608"/>
@@ -67,6 +67,7 @@
       <file category="source" condition="GCC_Condition" deviceDependent="1" name="source/firmware/cmsis/source/start.c"/>
       <file attr="config" category="source" deviceDependent="1" name="source/firmware/cmsis/source/system_rsl10.c" version="1.0.0"/>
       <file attr="config" category="source" condition="GCC_Condition" deviceDependent="1" name="source/firmware/cmsis/source/GCC/startup_rsl10.S" version="1.0.0"/>
+      <file attr="config" category="linkerScript" condition="GCC_Condition" deviceDependent="1" name="source/firmware/cmsis/source/GCC/sections.ld" version="1.0.0"/>
       <file attr="config" category="header" deviceDependent="1" name="source/firmware/drivers/RTE_config/RTE_Device.h" version="1.0.0"/>
     </component>
   </components>
