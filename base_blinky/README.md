@@ -1,51 +1,32 @@
-GPIO Driver Sample Code
-=======================
+# I2C sample code
 
-NOTE: If you use this sample application for your own purposes, follow
-      the licensing agreement specified in `Software_Use_Agreement.rtf`
-      in the home directory of the installed RSL10 Software
-      Development Kit (SDK).
+## Introduction
+This sample code will show you how to setup and running I2C on RSL1000 board. It is demonstrated by interfacing the RGB LED driver NCP5623 from OnSemi
 
-Overview
---------
-This sample project demonstrates an application that:
+## How-to
+* Add I2C CMSIS driver into the project
 
-1.  Uses GPIO5 to toggle the LED diode.
-2.  Uses GPIO11 to disable the LED toggling.
+![CMSIS Driver](../Document/img/cmsis.png)
 
-The source code exists in `app.c`, with additional `app.h` and 
-`RTE_device.h` header files included.
+* Configure the I2C and Pin instance
 
-Verification
-------------
-To verify that the application is working correctly, connect the board
-to the power supply. On each button press the LED toggles. When GPIO11
-is connected to ground, LED toggling is disabled.
+![CMSIS Driver](../Document/img/open_with_cmsis_wizard.png)
 
-Hardware Requirements
----------------------
-This application can be executed on any Evaluation and Development Board
-with no external connections required.
+![CMSIS Driver](../Document/img/i2c_conf.png)
 
-Importing a Project
--------------------
-To import the sample code into your IDE workspace, refer to the
-Getting Started Guide for your IDE for more information.
+![CMSIS Driver](../Document/img/gpio_conf.png)
 
-Notes
------
-Sometimes the firmware in RSL10 cannot be successfully re-flashed, due to the
-application going into Sleep Mode or resetting continuously (either by design 
-or due to programming error). To circumvent this scenario, a software recovery
-mode using DIO12 can be implemented with the following steps:
+* Please refer the sample code for the implemetation  
 
-1.  Connect DIO12 to ground.
-2.  Press the RESET button (this restarts the application, which will
-    pause at the start of its initialization routine).
-3.  Re-flash RSL10. After successful re-flashing, disconnect DIO12 from
-    ground, and press the RESET button so that the application will work
-    properly.
+## Changelog
 
-***
-Copyright (c) 2019 Semiconductor Components Industries, LLC
-(d/b/a ON Semiconductor).
+### Version 1.0.0
+* Initialize version
+
+## Todo
+* Write the README in a formal way
+
+## Contact
+Quang Hai Nguyen
+
+qnguyen@arroweurope.com
