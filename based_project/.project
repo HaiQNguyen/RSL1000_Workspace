@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>base_blinky</name>
+	<name>based_project</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -23,15 +23,8 @@
 		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 		<nature>com.arm.cmsis.pack.project.RteNature</nature>
-		<nature>org.eclipse.linuxtools.tmf.project.nature</nature>
-		<nature>com.arm.cmsis.pack.project.RteNature</nature>
 	</natures>
 	<linkedResources>
-		<link>
-			<name>RTE/CMSIS_Driver/I2C_RSLxx.c</name>
-			<type>1</type>
-			<locationURI>$%7Bcmsis_pack_root%7D/ONSemiconductor/RSL10/3.2.608/source/firmware/drivers/i2c_driver/source/I2C_RSLxx.c</locationURI>
-		</link>
 		<link>
 			<name>RTE/CMSIS_Driver/USART_RSLxx.c</name>
 			<type>1</type>
